@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+    postgres:
+        network_mode: flyde
+        ports:
+            - '5433:5432'
+        container_name: flyde-postgres
+        volumes: 
+            - /var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=postgres
+        image: postgres
+    rabbitmq:
+        network_mode: flyde
+        ports:
+            - '5673:5672'
+            - '15673:15672'
+        container_name: flyde-rabbitmq
+        image: rabbitmq
+    mongo:
+        network_mode: flyde
+        ports:
+            - '27018:27017'
+        container_name: flyde-mongodb
+        volumes:
+            -  /data/db
+        image: mongo:4.4.8
+    redis:
+        network_mode: flyde
+        ports:
+            - '6380:6379'
+        container_name: flyde-redis
+        image: redis
+

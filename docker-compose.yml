@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  dcruz-vwfs-mysql:
+    image: mysql:5.7
+    volumes:
+      - vwfs_data:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: plataformainc
+      MYSQL_DATABASE: vwfs
+      MYSQL_USER: plataformainc
+      MYSQL_PASSWORD: plataformainc
+volumes:
+  vwfs_data: {}

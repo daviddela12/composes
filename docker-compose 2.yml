@@ -1,0 +1,34 @@
+version: '3.3'
+services:
+    postgres:
+        network_mode: flyde
+        ports:
+            - '5432:5432'
+        container_name: dcruz-flyde-postgres
+        volumes: 
+            - /var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=postgres
+        image: postgres
+    rabbitmq:
+        network_mode: flyde
+        ports:
+            - '5672:5672'
+            - '15672:15672'
+        container_name: dcruz-flyde-rabbitmq
+        image: rabbitmq:management
+    mongo:
+        network_mode: flyde
+        container_name: dcruz-flyde-mongodb
+        image: mongo:4.4.8
+        ports:
+            - '27017:27017'
+        volumes:
+            -  /data/db
+    redis:
+        network_mode: flyde
+        ports:
+            - '6379:6379'
+        container_name: dcruz-flyde-redis
+        image: redis
+
